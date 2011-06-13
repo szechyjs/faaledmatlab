@@ -135,6 +135,7 @@ function steady_test(sub_num)
         putsample(ao, [0 5])
 
         %break before next trial
+        tone(900, 0.1);
         pause(post_res_delay);
         %%%%%%%%%%%%%%%%%got to here when editing
 
