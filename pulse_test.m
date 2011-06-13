@@ -58,7 +58,17 @@ function pulse_test(pulse_length, sub_num)
 
         if test_index == 85
             sprintf('%s','30 Second Break Initiated')
-            pause(30)
+            pause(25)
+            tone(860,.3);
+            pause(1)
+            tone(870,.3);
+            pause(1)
+            tone(880,.3);
+            pause(1)
+            tone(890,.3);
+            pause(1)
+            tone(900,.3);
+            pause(1)
             sprintf('%s','30 Second Break Ended')
         end
 
