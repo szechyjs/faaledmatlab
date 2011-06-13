@@ -23,14 +23,6 @@ addchannel(ai, [0 1]);
 ai.SampleRate = 100;
 ai.SamplesPerTrigger = 500;
 
-%generate sound
-ss_cf = 440;
-ss_sf = 22050;
-ss_d = .4;
-ss_n = ss_sf*ss_d;
-ss_s = (1:ss_n) /ss_sf;
-ss_s = sin(2*pi * ss_cf  * ss_s);
-
 %initialize the LED with 0V --> light will be off
 putsample(ao, [0 5])
 
@@ -84,7 +76,7 @@ for test_index = 1:5
     % Start the acquisition
     start(ai);
     
-    sound(ss_s, ss_sf)
+    tone(440, 0.4)
     start(ao)
     %trigger(ao)
     wait(ao,6)
@@ -155,7 +147,7 @@ for test_index = 6:10
     % Start the acquisition
     start(ai);
     
-    sound(ss_s, ss_sf)
+    tone(440, 0.4)
     start(ao)
     %trigger(ao)
     wait(ao,6)
@@ -226,7 +218,7 @@ for test_index = 11:15
     % Start the acquisition
     start(ai);
     
-    sound(ss_s, ss_sf)
+    tone(440, 0.4)
     start(ao)
     %trigger(ao)
     wait(ao,6)
