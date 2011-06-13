@@ -11,11 +11,10 @@ function pre_test(subject_number)
     %load necessary files, inc_cal linearizes the voltage-intensity
     %relationship
     load('int_cal.mat')
-    %subject number corralates data to the same subject for all of the tests
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%Subject Data Entry and PreTest%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     %subject initialization
     if (~exist('subject_number', 'var'))
@@ -28,6 +27,7 @@ function pre_test(subject_number)
 
     %Dark Adabption timer
     da_time_limit = 10; %min
+    post_res_delay = 2; %sec
 
     for time = 1:8*60*da_time_limit
         pause(.1)
@@ -78,7 +78,7 @@ function pre_test(subject_number)
         yes = data(:,1);
         no = data(:,2);
 
-        res_title = sprintf('%s %d %s %d','Response for Trial Number ', test_index, 'of', length(test_values_rand));
+        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
@@ -117,7 +117,7 @@ function pre_test(subject_number)
         putsample(ao, [0 5])
 
         %break before next trial
-        pause(2);
+        pause(post_res_delay);
         %%%%%%%%%%%%%%%%%got to here when editing
 
     end
@@ -149,7 +149,7 @@ function pre_test(subject_number)
         yes = data(:,1);
         no = data(:,2);
 
-        res_title = sprintf('%s %d %s %d','Response for Trial Number ', test_index, 'of', length(test_values_rand));
+        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
@@ -188,7 +188,7 @@ function pre_test(subject_number)
         putsample(ao, [0 5])
 
         %break before next trial
-        pause(2);
+        pause(post_res_delay);
         %%%%%%%%%%%%%%%%%got to here when editing
 
     end
@@ -220,7 +220,7 @@ function pre_test(subject_number)
         yes = data(:,1);
         no = data(:,2);
 
-        res_title = sprintf('%s %d %s %d','Response for Trial Number ', test_index, 'of', length(test_values_rand));
+        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
@@ -259,7 +259,7 @@ function pre_test(subject_number)
         putsample(ao, [0 5])
 
         %break before next trial
-        pause(2);
+        pause(post_res_delay);
         %%%%%%%%%%%%%%%%%got to here when editing
 
     end

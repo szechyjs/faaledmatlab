@@ -16,8 +16,8 @@ function steady_test(sub_num)
     %load necessary files, inc_cal linearizes the voltage-intensity
     %relationship
     load('int_cal.mat')
-    %subject number corralates data to the same subject for all of the tests
-    sub_num = input('What is subject number?    ');
+    
+    post_res_delay = 2; %sec
 
     %%%%%Udate required based on new voltages%%%%%
     test_values = v_model;
@@ -86,7 +86,7 @@ function steady_test(sub_num)
         yes = data(:,1);
         no = data(:,2);
 
-        res_title = sprintf('%s %d %s %d','Response for Trial Number ', test_index, 'of', length(test_values_rand));
+        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
@@ -125,7 +125,7 @@ function steady_test(sub_num)
         putsample(ao, [0 5])
 
         %break before next trial
-        pause(2);
+        pause(post_res_delay);
         %%%%%%%%%%%%%%%%%got to here when editing
 
     end
