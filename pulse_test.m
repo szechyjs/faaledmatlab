@@ -3,7 +3,7 @@ function pulse_test(pulse_length, sub_num)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%% Single Trial Test Based on Signal Detection Theory %%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    clear; close all; clc;
+    clear all; close all;
     
     % If file is ran by itself collect required variables
     if(~exist('sub_num','var'))
@@ -13,29 +13,9 @@ function pulse_test(pulse_length, sub_num)
     if(~exist('pulse_length','var'))
         pulse_length = input('What is the pulse length (ms)?    ');
     end
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % DAQ Initialization %%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
-    hw = daqhwinfo('nidaq')
-    ao = analogoutput('nidaq','Dev1')
-    addchannel(ao, [0 1]);
-
-    % Create an analog input object using Board ID "Dev5".
-    ai = analoginput('nidaq','Dev5');
-
-    % Data will be acquired from hardware channel 0 and 1
-    %these represent the the yes and no buttons
-    addchannel(ai, [0 1]);
-    % Set the sample rate and samples per trigger
-    %at a sample collection rate of 100 samples per second, collecting 500
-    %samples will be equivalent to 5 seconds of data collection
-    ai.SampleRate = 100;
-    ai.SamplesPerTrigger = 500;
-
-    %initialize the LED with 0V --> light will be off
-    putsample(ao, [0 5])
+    % DAQ Initialization
+    daq_init();
 
     %load necessary files, inc_cal linearizes the voltage-intensity
     %relationship
