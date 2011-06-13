@@ -3,7 +3,7 @@ function pre_test(subject_number)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%% Single Trial Test Based on Signal Detection Theory %%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    clear all; close all;
+    close all;
     
     % DAQ Initialization
     daq_init();

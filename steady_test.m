@@ -3,7 +3,7 @@ function steady_test(sub_num)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%% Single Trial Test Based on Signal Detection Theory %%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    clear all; close all;
+    close all;
     
     % If file is ran by itself collect required variables
     if(~exist('sub_num','var'))
