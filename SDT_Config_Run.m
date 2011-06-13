@@ -13,7 +13,7 @@ time_steady = 20;
 time_pulse = 20;
 time_total = 0;
 
-% Configure the test
+%% Configure the test
 run_pre = questdlg('Run pre-test?', 'Pre-test', 'Yes', 'No', 'Yes');
 run_steady = questdlg('Run steady state?', 'Steady State', 'Yes', 'No', 'Yes');
 run_pulse = questdlg('Run pulse test(s)?', 'Pulse Tests', 'Yes', 'No', 'Yes');
@@ -45,9 +45,9 @@ end
 
 % Display test configuration
 disp(' ');
-disp('*******************************');
+disp('********************************');
 disp('Test Configuration');
-disp('*******************************');
+disp('********************************');
 fprintf('Pre-test: %s\n', run_pre);
 fprintf('Steady State: %s\n', run_steady);
 fprintf('Pulse: %s\n', run_pulse);
@@ -56,26 +56,27 @@ if (strcmp(run_pulse, 'Yes'))
     disp(pulses);
 end
 fprintf('Estimated test time: %d minutes\n', time_total);
-disp('*******************************');
+disp('********************************');
 disp(' ');
 
 % Get the subject number
 subject_number   = input('What is Subject Number? ');
 
-% Collect user info and run pretest
+%% Collect user info and run pretest
 if (strcmp(run_pre, 'Yes'))
     disp('Starting Pre-test...');
     pre_test(subject_number)
     disp('Pre-test Complete!');
 end
 
-% Run steady state test
+%% Run steady state test
 if (strcmp(run_steady, 'Yes'))
     disp('Starting Steady State Test...');
     steady_test(subject_number)
     disp('Steady State Test Complete!');
 end
 
+%% Run pulse tests
 if (run_pulse == 'Yes')
     disp('Starting Pulse Tests');
     for i=1:num_pulses
