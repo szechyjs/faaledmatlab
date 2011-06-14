@@ -141,7 +141,6 @@ function pulse_test(pulse_length, sub_num)
         %break before next trial
         tone(900, 0.1);
         pause(post_res_delay);
-        %%%%%%%%%%%%%%%%%got to here when editing
 
     end
 

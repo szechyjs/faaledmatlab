@@ -119,7 +119,6 @@ function pre_test(subject_number)
         %break before next trial
         tone(900, 0.1);
         pause(post_res_delay);
-        %%%%%%%%%%%%%%%%%got to here when editing
 
     end
 
@@ -191,7 +190,6 @@ function pre_test(subject_number)
         %break before next trial
         tone(900, 0.1);
         pause(post_res_delay);
-        %%%%%%%%%%%%%%%%%got to here when editing
 
     end
 
@@ -263,7 +261,6 @@ function pre_test(subject_number)
         %break before next trial
         tone(900, 0.1);
         pause(post_res_delay);
-        %%%%%%%%%%%%%%%%%got to here when editing
 
     end
 
