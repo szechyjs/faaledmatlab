@@ -64,7 +64,6 @@ subject_number = input('What is Subject Number? ');
 
 %% Collect user info and run pretest
 if (strcmp(run_pre, 'Yes'))
-    input('Press Enter when ready to start Pre-test...');
     disp('Starting Pre-test...');
     pre_test(subject_number)
     disp('Pre-test Complete!');
@@ -72,7 +71,6 @@ end
 
 %% Run steady state test
 if (strcmp(run_steady, 'Yes'))
-    input('Press Enter when ready to start Steady State Test...');
     disp('Starting Steady State Test...');
     steady_test(subject_number)
     disp('Steady State Test Complete!');
@@ -83,7 +81,6 @@ if (strcmp(run_pulse,'Yes'))
     disp('Starting Pulse Tests');
     for i=1:num_pulses
        fprintf('Testing %dms Pulses...\n', pulses(i));
-       input('Press Enter when ready to start...');
        pulse_test(pulses(i), subject_number); 
        fprintf('%dms Pulse Test Complete!', pulses(i));
     end
