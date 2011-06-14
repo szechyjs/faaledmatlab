@@ -8,6 +8,14 @@ function daq_init()
         hw = daqhwinfo('nidaq')
         ao = analogoutput('nidaq','Dev1')
         addchannel(ao, [0 1]);
+        
+        dio = digitalio('nidaq', 'Dev1');
+        do_no = addline(dio, 0, 'Out', 'No Output');
+        di_no = addline(dio, 1, 'In', 'No Input');
+        do_yes = addline(dio, 2, 'Out', 'Yes Output');
+        di_yes = addline(dio, 3, 'In', 'Yes Input');
+        dig_in = [di_no di_yes];
+        dig_out = [do_no do_yes];
 
         % Create an analog input object using Board ID "Dev5".
         ai = analoginput('nidaq','Dev5');
