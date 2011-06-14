@@ -10,8 +10,36 @@ function steady_test(sub_num)
         sub_num = input('What is subject number?    ');
     end
     
-    % DAQ Initialization
-    daq_init();
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DAQ Initialization %%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    if (~exist('ao') || ~exist('ai'))
+        
+        hw = daqhwinfo('nidaq');
+        
+        % Create an analog output object using Board ID "Dev1".
+        ao = analogoutput('nidaq','Dev1');
+        addchannel(ao, 0);
+        
+        dio = digitalio('nidaq', 'Dev1');
+        addline(dio, 0:1, 0, 'Out');
+
+        % Create an analog input object using Board ID "Dev1".
+        ai = analoginput('nidaq','Dev1');
+
+        % Data will be acquired from hardware channel 0 and 1
+        % these represent the the yes and no buttons
+        addchannel(ai, [0 1]);
+        
+        % Set the sample rate and samples per trigger
+        % at a sample collection rate of 100 samples per second, collecting 500
+        % samples will be equivalent to 5 seconds of data collection
+        ai.SampleRate = 100;
+        ai.SamplesPerTrigger = 500;
+    end
+    
+    % initialize the LED with 0V --> light will be off
+    putsample(ao, 0)
 
     %load necessary files, inc_cal linearizes the voltage-intensity
     %relationship
@@ -70,7 +98,11 @@ function steady_test(sub_num)
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,2500) 0*ones(1,1)])';
         %Output data — Start AO and wait for the device object to stop running.
-        putdata(ao,[data 5*ones(length(data),1)])
+        putdata(ao, data)
+        
+        % Turn switches on
+        putvalue(dio, [1 1])
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%%%%%%we need to test if the user can input while the light is being
         %%%%%%%displayed
@@ -132,7 +164,7 @@ function steady_test(sub_num)
         end
 
         %%%%%%check if this is necessary
-        putsample(ao, [0 5])
+        putsample(ao, 0)
 
         %break before next trial
         tone(900, 0.1);
@@ -150,7 +182,8 @@ function steady_test(sub_num)
 
     %%clean up 
     delete(ai);
-    delete(ao)
+    delete(ao);
+    delete(dio);
     clear ao
 
 end

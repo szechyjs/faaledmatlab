@@ -5,14 +5,17 @@ function daq_init()
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if (~exist('ao') || ~exist('ai'))
         
-        hw = daqhwinfo('nidaq')
+        hw = daqhwinfo('nidaq');
         
         % Create an analog output object using Board ID "Dev1".
-        ao = analogoutput('nidaq','Dev1')
-        addchannel(ao, [0 1]);
+        ao = analogoutput('nidaq','Dev1');
+        addchannel(ao, 0);
+        
+        dio = digitalio('nidaq', 'Dev1');
+        addline(dio, 0:1, 0, 'Out');
 
-        % Create an analog input object using Board ID "Dev5".
-        ai = analoginput('nidaq','Dev5');
+        % Create an analog input object using Board ID "Dev1".
+        ai = analoginput('nidaq','Dev1');
 
         % Data will be acquired from hardware channel 0 and 1
         % these represent the the yes and no buttons
@@ -26,6 +29,6 @@ function daq_init()
     end
 
     % initialize the LED with 0V --> light will be off
-    putsample(ao, [0 5])
+    putsample(ao, 0)
     
 end

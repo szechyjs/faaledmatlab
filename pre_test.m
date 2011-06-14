@@ -5,8 +5,36 @@ function pre_test(subject_number)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     close all;
     
-    % DAQ Initialization
-    daq_init();
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % DAQ Initialization %%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    if (~exist('ao') || ~exist('ai'))
+        
+        hw = daqhwinfo('nidaq');
+        
+        % Create an analog output object using Board ID "Dev1".
+        ao = analogoutput('nidaq','Dev1');
+        addchannel(ao, 0);
+        
+        dio = digitalio('nidaq', 'Dev1');
+        addline(dio, 0:1, 0, 'Out');
+
+        % Create an analog input object using Board ID "Dev1".
+        ai = analoginput('nidaq','Dev1');
+
+        % Data will be acquired from hardware channel 0 and 1
+        % these represent the the yes and no buttons
+        addchannel(ai, [0 1]);
+        
+        % Set the sample rate and samples per trigger
+        % at a sample collection rate of 100 samples per second, collecting 500
+        % samples will be equivalent to 5 seconds of data collection
+        ai.SampleRate = 100;
+        ai.SamplesPerTrigger = 500;
+    end
+    
+    % initialize the LED with 0V --> light will be off
+    putsample(ao, 0)
 
     %load necessary files, inc_cal linearizes the voltage-intensity
     %relationship
@@ -26,10 +54,10 @@ function pre_test(subject_number)
     glass_or_contact = input('Glasses (Enter 1) Hard Contacts (2) Soft (3) Lasik (4) or None (5)?  ','s');
 
     %Dark Adabption timer
-    da_time_limit = 10; %min
+    da_time_limit = 8; %min
     post_res_delay = 2; %sec
 
-    for time = 1:8*60*da_time_limit
+    for time = 1:10*60*da_time_limit
         pause(.1)
         output = sprintf('%s %0.3g','Dark Adaptation Time Elapsed:    ',time/600)
     end
@@ -55,7 +83,7 @@ function pre_test(subject_number)
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,2500) 0*ones(1,1)])';
         %Output data — Start AO and wait for the device object to stop running.
-        putdata(ao,[data 5*ones(length(data),1)])
+        putdata(ao, data)
 
         % Start the acquisition
         start(ai);
@@ -114,7 +142,7 @@ function pre_test(subject_number)
         end
 
         %%%%%%check if this is necessary
-        putsample(ao, [0 5])
+        putsample(ao, 0)
 
         %break before next trial
         tone(900, 0.1);
@@ -126,7 +154,7 @@ function pre_test(subject_number)
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,45) 0*ones(1,1)])';
         %Output data — Start AO and wait for the device object to stop running.
-        putdata(ao,[data 5*ones(length(data),1)])
+        putdata(ao, data)
 
         % Start the acquisition
         start(ai);
@@ -185,7 +213,7 @@ function pre_test(subject_number)
         end
 
         %%%%%%check if this is necessary
-        putsample(ao, [0 5])
+        putsample(ao, 0)
 
         %break before next trial
         tone(900, 0.1);
@@ -197,7 +225,7 @@ function pre_test(subject_number)
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,113) 0*ones(1,1)])';
         %Output data — Start AO and wait for the device object to stop running.
-        putdata(ao,[data 5*ones(length(data),1)])
+        putdata(ao, data)
 
         % Start the acquisition
         start(ai);
@@ -256,7 +284,7 @@ function pre_test(subject_number)
         end
 
         %%%%%%check if this is necessary
-        putsample(ao, [0 5])
+        putsample(ao, 0)
 
         %break before next trial
         tone(900, 0.1);
@@ -274,7 +302,8 @@ function pre_test(subject_number)
 
     %%clean up 
     delete(ai);
-    delete(ao)
+    delete(ao);
+    delete(dio);
     clear ao
 
 end
