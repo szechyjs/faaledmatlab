@@ -80,6 +80,15 @@ if subject_number >= 147 && subject_number <= 170
     res_time_no_p1 = subject_data_90.NoResponseTime;
 end
 
+if subject_number >= 200
+    load(filename4)
+    pulse_name1 = '90'; 
+    res_p1 = subject_data.ResponseMatrix;
+    voltage_p1 = subject_data.ControlVoltageOutput;
+    res_time_yes_p1 = subject_data.YesResponseTime;
+    res_time_no_p1 = subject_data.NoResponseTime;
+end
+
 volt_ops = v_model;
 
 %% Results for the 5 second (steady) pulse
