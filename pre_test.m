@@ -84,7 +84,7 @@ function pre_test(subject_number)
     for test_index = 1:5
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,2500) 0*ones(1,1)])';
-        %Output data — Start AO and wait for the device object to stop running.
+        %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
 
         % Start the acquisition
@@ -156,7 +156,7 @@ function pre_test(subject_number)
     for test_index = 6:10
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,45) 0*ones(1,1)])';
-        %Output data — Start AO and wait for the device object to stop running.
+        %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
 
         % Start the acquisition
@@ -228,7 +228,7 @@ function pre_test(subject_number)
     for test_index = 11:15
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,113) 0*ones(1,1)])';
-        %Output data — Start AO and wait for the device object to stop running.
+        %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
 
         % Start the acquisition

@@ -101,7 +101,7 @@ function pulse_test(pulse_length, sub_num)
         end
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,pulse_length/2) 0*ones(1,1)])';
-        %Output data — Start AO and wait for the device object to stop running.
+        %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%%%%%%we need to test if the user can input while the light is being
