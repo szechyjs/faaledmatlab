@@ -66,6 +66,7 @@ function pre_test(subject_number)
     test_values = v_model;
     %%%%%------------------------------------%%%%%
 
+    % Use the following values for each test [8.7 4.25 0 8.7 6]
     test_values_rand = [test_values(20) test_values(10) 0 test_values(20) test_values(15)];
     test_values_rand = [test_values_rand test_values_rand test_values_rand];
     responses = -99*ones(1,length(test_values_rand));
@@ -79,6 +80,7 @@ function pre_test(subject_number)
         isready = input('Is the tester ready for pre-test?   ','s');
     end
 
+    % Steady state test (2.5s pulse)
     for test_index = 1:5
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,2500) 0*ones(1,1)])';
@@ -150,6 +152,7 @@ function pre_test(subject_number)
 
     end
 
+    % Pulse test 1 (90ms pulse)
     for test_index = 6:10
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,45) 0*ones(1,1)])';
@@ -221,6 +224,7 @@ function pre_test(subject_number)
 
     end
 
+    % Pulse test 2 (226ms pulse)
     for test_index = 11:15
 
         data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,113) 0*ones(1,1)])';
