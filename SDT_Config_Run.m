@@ -9,8 +9,8 @@ num_pulses = length(pulses);
 
 % Time approximation variables
 time_pre = 10;
-time_steady = 20;
-time_pulse = 20;
+time_steady = 20.3;
+time_pulse = 17.5;
 time_total = 0;
 
 %% Configure the test
@@ -55,7 +55,7 @@ if (strcmp(run_pulse, 'Yes'))
     disp('Pulses to test: (ms)');
     disp(pulses);
 end
-fprintf('Estimated test time: %d minutes\n', time_total);
+fprintf('Estimated test time: %g minutes\n', time_total);
 disp('********************************');
 disp(' ');
 

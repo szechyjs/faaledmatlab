@@ -128,7 +128,7 @@ function steady_test(sub_num)
         yes = round(data(:,1));
         no = round(data(:,2));
 
-        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
+        res_title = sprintf('Response for Trial Number %d of %d, %g volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
