@@ -106,7 +106,7 @@ function pre_test(subject_number)
         yes = data(:,1);
         no = data(:,2);
 
-        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
+        res_title = sprintf('Response for Trial Number %d of %d, %g volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
@@ -177,7 +177,7 @@ function pre_test(subject_number)
         yes = data(:,1);
         no = data(:,2);
 
-        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
+        res_title = sprintf('Response for Trial Number %d of %d, %g volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
@@ -248,7 +248,7 @@ function pre_test(subject_number)
         yes = data(:,1);
         no = data(:,2);
 
-        res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
+        res_title = sprintf('Response for Trial Number %d of %d, %g volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
         %realtime plot of user responses
         figure(1)
