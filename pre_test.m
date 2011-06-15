@@ -105,8 +105,8 @@ function pre_test(subject_number)
         t = linspace(0,ai.SamplesPerTrigger/ai.SampleRate,length(data));
 
         %store button data as vectors called yes and no
-        yes = data(:,1);
-        no = data(:,2);
+        yes = round(data(:,1));
+        no = round(data(:,2));
 
         res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
@@ -177,8 +177,8 @@ function pre_test(subject_number)
         t = linspace(0,ai.SamplesPerTrigger/ai.SampleRate,length(data));
 
         %store button data as vectors called yes and no
-        yes = data(:,1);
-        no = data(:,2);
+        yes = round(data(:,1));
+        no = round(data(:,2));
 
         res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
@@ -249,8 +249,8 @@ function pre_test(subject_number)
         t = linspace(0,ai.SamplesPerTrigger/ai.SampleRate,length(data));
 
         %store button data as vectors called yes and no
-        yes = data(:,1);
-        no = data(:,2);
+        yes = round(data(:,1));
+        no = round(data(:,2));
 
         res_title = sprintf('Response for Trial Number %d of %d, %d volts', test_index, length(test_values_rand)', test_values_rand(test_index));
 
