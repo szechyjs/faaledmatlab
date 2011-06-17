@@ -52,16 +52,19 @@ function pre_test(subject_number)
     vision           = input('Subjects Visual Accuity       ','s');
     gender           = input('Is Subject Male or Female?    ','s');
     glass_or_contact = input('Glasses (Enter 1) Hard Contacts (2) Soft (3) Lasik (4) or None (5)?  ','s');
+    skip_dark_adapt  = input('Skip dark adaption?           ','s');
 
     %Dark Adabption timer
     da_time_limit = 8; %min
     post_res_delay = 2; %sec
 
-    for time = 1:10*60*da_time_limit
-        pause(.1)
-        output = sprintf('%s %0.3g','Dark Adaptation Time Elapsed:    ',time/600)
+    if (strcmp(skip_dark_adapt, 'y'))
+        for time = 1:10*60*da_time_limit
+            pause(.1)
+            output = sprintf('%s %0.3g','Dark Adaptation Time Elapsed:    ',time/600)
+        end
+        disp('Dark Adaption Complete')
     end
-    disp('Dark Adaption Complete')
     %%%%%Udate required based on new voltages%%%%%
     test_values = v_model;
     %%%%%------------------------------------%%%%%
@@ -296,6 +299,42 @@ function pre_test(subject_number)
 
     end
 
+    % Plot results of Pre-test
+    close all;
+    x = 1:15;
+
+    expected = [1; 1; 0; 1; 1];
+    expected = [expected; expected; expected];
+
+    % Calculated percentage correct
+    numcorrect = 0;
+    for i=1:length(expected)
+        if (res_pretest(i) == expected(i))
+            numcorrect = numcorrect + 1;
+        end
+    end
+    percentage = numcorrect / length(expected) * 100;
+
+    % Change expected value to ratio of brightest
+    expected = voltages_tested.*expected;
+    expected = expected./max(voltages_tested);
+
+    % Compile plot variable
+    plot_values = [responses' expected];
+
+    % Plot results
+    sprintf('Percentage correct %g%%', percentage)
+    subplot(311);bar(x(1:5),plot_values(1:5,:));
+    title('2.5s Pulse Results');
+    set(gca,'YTick',[0 1]);
+    subplot(312);bar(x(6:10),plot_values(6:10,:));
+    title('90ms Pulse Results');
+    set(gca,'YTick',[0 1]);
+    subplot(313);bar(x(11:15),plot_values(11:15,:));
+    title('226ms Pulse Results');
+    set(gca,'YTick',[0 1]);
+    legend('Response','Intensity');
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%
     %store and save data%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%
