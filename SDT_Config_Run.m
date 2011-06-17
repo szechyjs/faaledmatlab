@@ -63,10 +63,16 @@ disp(' ');
 subject_number = input('What is Subject Number? ');
 
 %% Collect user info and run pretest
-if (strcmp(run_pre, 'Yes'))
+while (strcmp(run_pre, 'Yes'))
     disp('Starting Pre-test...');
     pre_test(subject_number)
     disp('Pre-test Complete!');
+    run_pre = input('Run pre-test again? ', 's');
+    if(strcmp(run_pre,'y'))
+        run_pre = 'Yes';
+    else
+        run_pre = 'No';
+    end
 end
 
 %% Run steady state test
