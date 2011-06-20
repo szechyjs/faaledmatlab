@@ -4,7 +4,7 @@
 clear all; close all; clc
 
 % Default pulse widths
-pulses = [26 90];       % 26, 90, 226, 750, 2000
+pulses = [50 140];       % 26, 50, 90, 140, 226, 500, 1000
 num_pulses = length(pulses);
 
 % Time approximation variables
