@@ -58,7 +58,7 @@ function pre_test(subject_number)
     da_time_limit = 8; %min
     post_res_delay = 2; %sec
 
-    if (strcmp(skip_dark_adapt, 'y'))
+    if (~strcmp(skip_dark_adapt, 'y'))
         for time = 1:10*60*da_time_limit
             pause(.1)
             output = sprintf('%s %0.3g','Dark Adaptation Time Elapsed:    ',time/600)
@@ -309,14 +309,14 @@ function pre_test(subject_number)
     % Calculated percentage correct
     numcorrect = 0;
     for i=1:length(expected)
-        if (res_pretest(i) == expected(i))
+        if (responses(i) == expected(i))
             numcorrect = numcorrect + 1;
         end
     end
     percentage = numcorrect / length(expected) * 100;
 
     % Change expected value to ratio of brightest
-    expected = voltages_tested.*expected;
+    expected = voltages_tested'.*expected;
     expected = expected./max(voltages_tested);
 
     % Compile plot variable
