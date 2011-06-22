@@ -3,10 +3,10 @@ clc; close all; clear all;
 subject_number = input('What is Subject Number?       ');
 
 filename1 = sprintf('%s %d %s', 'Subject', subject_number, 'Steady.mat');
-filename2 = sprintf('%s %d %s', 'Subject', subject_number, 'P26.mat');
-filename3 = sprintf('%s %d %s', 'Subject', subject_number, 'P226.mat');
-filename4 = sprintf('%s %d %s', 'Subject', subject_number, 'P90.mat');
-filename5 = sprintf('%s %d %s', 'Subject', subject_number, 'P2000.mat');
+filename2 = sprintf('%s %d %s', 'Subject', subject_number, 'P50.mat');
+filename3 = sprintf('%s %d %s', 'Subject', subject_number, 'P140.mat');
+filename4 = sprintf('%s %d %s', 'Subject', subject_number, 'P500.mat');
+filename5 = sprintf('%s %d %s', 'Subject', subject_number, 'P1000.mat');
 
 xls_threshold_file = 'Summer_2011_Thresholds';
 
@@ -44,49 +44,22 @@ res_time_no_steady = subject_data_steady.NoResponseTime;
 
 %use the if statements to sort the subject by which of the pulse width test
 %they took
-if subject_number >= 110 && subject_number <= 146
-    load(filename2)
-    pulse_name1 = '26';
-    res_p1 = subject_data_26.ResponseMatrix;
-    voltage_p1 = subject_data_26.ControlVoltageOutput;
-    res_time_yes_p1 = subject_data_26.YesResponseTime;
-    res_time_no_p1 = subject_data_26.NoResponseTime;
-end
-
-if subject_number >= 110 && subject_number <= 170
-    load(filename3)
-    pulse_name2 = '226'; 
-    res_p2 = subject_data_226.ResponseMatrix;
-    voltage_p2 = subject_data_226.ControlVoltageOutput;
-    res_time_yes_p2 = subject_data_226.YesResponseTime;
-    res_time_no_p2 = subject_data_226.NoResponseTime;
-end
-
-if subject_number >= 147 && subject_number <= 170
-    load(filename3)
-    pulse_name2 = '226'; 
-    res_p2 = subject_data_226.ResponseMatrix;
-    voltage_p2 = subject_data_226.ControlVoltageOutput;
-    res_time_yes_p2 = subject_data_226.YesResponseTime;
-    res_time_no_p2 = subject_data_226.NoResponseTime;
-end
-
-if subject_number >= 147 && subject_number <= 170
-    load(filename4)
-    pulse_name1 = '90'; 
-    res_p1 = subject_data_90.ResponseMatrix;
-    voltage_p1 = subject_data_90.ControlVoltageOutput;
-    res_time_yes_p1 = subject_data_90.YesResponseTime;
-    res_time_no_p1 = subject_data_90.NoResponseTime;
-end
-
 if subject_number >= 200
-    load(filename4)
-    pulse_name1 = '90'; 
+    load(filename2)
+    pulse_name1 = '50'; 
     res_p1 = subject_data.ResponseMatrix;
     voltage_p1 = subject_data.ControlVoltageOutput;
     res_time_yes_p1 = subject_data.YesResponseTime;
     res_time_no_p1 = subject_data.NoResponseTime;
+end
+
+if subject_number >= 200
+    load(filename3)
+    pulse_name2 = '140'; 
+    res_p2 = subject_data.ResponseMatrix;
+    voltage_p2 = subject_data.ControlVoltageOutput;
+    res_time_yes_p2 = subject_data.YesResponseTime;
+    res_time_no_p2 = subject_data.NoResponseTime;
 end
 
 volt_ops = v_model;
@@ -160,7 +133,7 @@ ylabel('Probability of Detection');
 legend({'P(False Pos)','Data', 'Threshold','Weighted fit', '95% Confidence Limits'},'location','SouthEast');
 axis([0 10 -.2 1.2])
 
-range = sprintf('%s %d','A',subject_number-100);
+range = sprintf('%s %d','A',subject_number-199);
 if subject_number == 28
     xlswrite(xls_threshold_file, {'ERROR'}, 1, range)
 else
@@ -238,7 +211,7 @@ xlabel('Intensity (\mucd)');
 ylabel('Probability of Detection');
 axis([0 15 -.2 1.2])
 
-range = sprintf('%s %d','C',subject_number-100);
+range = sprintf('%s %d','B',subject_number-199);
 if subject_number == 28
     xlswrite(xls_threshold_file, {'ERROR'}, 1, range)
 else
@@ -315,7 +288,7 @@ xlabel('Intensity (\mucd)');
 ylabel('Probability of Detection');
 axis([0 10 -.2 1.2])
 
-range = sprintf('%s %d','B',subject_number-100);
+range = sprintf('%s %d','C',subject_number-199);
 if subject_number == 28
     xlswrite(xls_threshold_file, {'ERROR'}, 1, range)
 else
