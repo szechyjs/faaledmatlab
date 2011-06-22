@@ -96,7 +96,7 @@ function steady_test(sub_num)
             sprintf('%s','30 Second Break Ended')
         end
 
-        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,2500) 0*ones(1,1)])';
+        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,5000) 0*ones(1,1)])';
         %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
         
