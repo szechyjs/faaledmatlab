@@ -55,7 +55,7 @@ function pre_test(subject_number)
     skip_dark_adapt  = input('Skip dark adaption?           ','s');
 
     %Dark Adabption timer
-    da_time_limit = 8; %min
+    da_time_limit = 10; %min
     post_res_delay = 2; %sec
 
     if (~strcmp(skip_dark_adapt, 'y'))
@@ -86,7 +86,7 @@ function pre_test(subject_number)
     % Steady state test (2.5s pulse)
     for test_index = 1:5
 
-        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,2500) 0*ones(1,1)])';
+        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,5000) 0*ones(1,1)])';
         %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
 
@@ -158,7 +158,7 @@ function pre_test(subject_number)
     % Pulse test 1 (90ms pulse)
     for test_index = 6:10
 
-        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,45) 0*ones(1,1)])';
+        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,50) 0*ones(1,1)])';
         %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
 
@@ -230,7 +230,7 @@ function pre_test(subject_number)
     % Pulse test 2 (226ms pulse)
     for test_index = 11:15
 
-        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,113) 0*ones(1,1)])';
+        data = ([0*ones(1,1) test_values_rand(test_index)*ones(1,140) 0*ones(1,1)])';
         %Output data - Start AO and wait for the device object to stop running.
         putdata(ao, data)
 
