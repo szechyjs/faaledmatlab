@@ -64,6 +64,9 @@ end
 
 volt_ops = v_model;
 
+range = sprintf('%s %d','A',subject_number-198);
+xlswrite(xls_threshold_file, subject_number, 1, range)
+
 %% Results for the 5 second (steady) pulse
 
 figure(1)
@@ -133,13 +136,8 @@ ylabel('Probability of Detection');
 legend({'P(False Pos)','Data', 'Threshold','Weighted fit', '95% Confidence Limits'},'location','SouthEast');
 axis([0 10 -.2 1.2])
 
-range = sprintf('%s %d','A',subject_number-199);
-if subject_number == 28
-    xlswrite(xls_threshold_file, {'ERROR'}, 1, range)
-else
-    xlswrite(xls_threshold_file, threshold(2), 1, range)
-end
-
+range = sprintf('%s %d','B',subject_number-198);
+xlswrite(xls_threshold_file, threshold(2), 1, range)
 
 %% Results for the P1 (depends on test set up for each of the subjects)
 
@@ -211,13 +209,9 @@ xlabel('Intensity (\mucd)');
 ylabel('Probability of Detection');
 axis([0 15 -.2 1.2])
 
-range = sprintf('%s %d','B',subject_number-199);
-if subject_number == 28
-    xlswrite(xls_threshold_file, {'ERROR'}, 1, range)
-else
-    xlswrite(xls_threshold_file, threshold(2), 1, range)
-end
-
+range = sprintf('%s %d','C',subject_number-198);
+xlswrite(xls_threshold_file, threshold(2), 1, range)
+    
 %% Results for the P2 (depends on test set up for each of the subjects)
 
 figure(1)
@@ -288,9 +282,5 @@ xlabel('Intensity (\mucd)');
 ylabel('Probability of Detection');
 axis([0 10 -.2 1.2])
 
-range = sprintf('%s %d','C',subject_number-199);
-if subject_number == 28
-    xlswrite(xls_threshold_file, {'ERROR'}, 1, range)
-else
-    xlswrite(xls_threshold_file, threshold(2), 1, range)
-end
+range = sprintf('%s %d','D',subject_number-198);
+xlswrite(xls_threshold_file, threshold(2), 1, range)
