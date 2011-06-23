@@ -42,20 +42,56 @@ voltage_steady = subject_data_steady.ControlVoltageOutput;
 res_time_yes_steady = subject_data_steady.YesResponseTime;
 res_time_no_steady = subject_data_steady.NoResponseTime;
 
+% check filenames for existance
+if (exist(filename2,'file'))
+    file2=1;
+else
+    file2=0;
+end
+if (exist(filename3,'file'))
+    file3=1;
+else
+    file3=0;
+end
+if (exist(filename4,'file'))
+    file4=1;
+else
+    file4=0;
+end
+if (exist(filename5,'file'))
+    file5=1;
+else
+    file5=0;
+end
+
 %use the if statements to sort the subject by which of the pulse width test
 %they took
-if subject_number >= 200
+if (file2 && file3)
     load(filename2)
     pulse_name1 = '50'; 
     res_p1 = subject_data.ResponseMatrix;
     voltage_p1 = subject_data.ControlVoltageOutput;
     res_time_yes_p1 = subject_data.YesResponseTime;
     res_time_no_p1 = subject_data.NoResponseTime;
-end
 
-if subject_number >= 200
     load(filename3)
     pulse_name2 = '140'; 
+    res_p2 = subject_data.ResponseMatrix;
+    voltage_p2 = subject_data.ControlVoltageOutput;
+    res_time_yes_p2 = subject_data.YesResponseTime;
+    res_time_no_p2 = subject_data.NoResponseTime;
+end
+
+if (file4 && file5)
+    load(filename4)
+    pulse_name1 = '500'; 
+    res_p1 = subject_data.ResponseMatrix;
+    voltage_p1 = subject_data.ControlVoltageOutput;
+    res_time_yes_p1 = subject_data.YesResponseTime;
+    res_time_no_p1 = subject_data.NoResponseTime;
+
+    load(filename5)
+    pulse_name2 = '1000'; 
     res_p2 = subject_data.ResponseMatrix;
     voltage_p2 = subject_data.ControlVoltageOutput;
     res_time_yes_p2 = subject_data.YesResponseTime;
