@@ -5,18 +5,9 @@ clear; close all; clc;
 
 hw = daqhwinfo('nidaq')
 ao = analogoutput('nidaq','Dev1')
-addchannel(ao, [0 1]); 
+addchannel(ao, 0); 
 
-% Create an analog input object using Board ID "Dev5".
-ai = analoginput('nidaq','Dev5');
-
-% Data will be acquired from hardware channel 0 and 1
-addchannel(ai, [0 1]);
-% Set the sample rate and samples per trigger
-ai.SampleRate = 100;
-ai.SamplesPerTrigger = 300;
-
-putsample(ao, [0 5])
+putsample(ao, 0)
 pause;
 
 TestArray_Length = 20;
@@ -25,7 +16,7 @@ TestArray = [3.2 3.25 3.3 3.4 3.5 3.6 3.7 3.9 4 4.25 4.5 4.75 5 5.5 6 6.5 7 7.5 
 output_cont_voltage = -99*ones(1,TestArray_Length);
 measured_I = -99*ones(1,TestArray_Length);
 for i = 1:TestArray_Length
-    putsample(ao, [TestArray(i) 5])
+    putsample(ao, TestArray(i))
     
     output_cont_voltage(i) = TestArray(i);
     measured_I(i) = input('What is the Intensity Measured?     ');    
@@ -36,7 +27,7 @@ plot(output_cont_voltage, measured_I,'-o')
 
 v_model = output_cont_voltage;
 I = measured_I;
-save('int_cal.mat', 'v_model', 'I')
+save('int_cal_new.mat', 'v_model', 'I')
 
 
 %%
