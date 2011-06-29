@@ -6,7 +6,7 @@ clear all; close all; clc
 % Default pulse widths
 pulses1 = [50 140];       % 26, 50, 90, 140, 226, 500, 1000
 pulses2 = [500 1000];
-pulses_train = [67 115; 140 140];
+pulses_train = [67 115; 140 115];
 num_train_pulses = length(pulses_train);
 
 % Time approximation variables
