@@ -7,6 +7,8 @@ filename2 = sprintf('%s %d %s', 'Subject', subject_number, 'P50.mat');
 filename3 = sprintf('%s %d %s', 'Subject', subject_number, 'P140.mat');
 filename4 = sprintf('%s %d %s', 'Subject', subject_number, 'P500.mat');
 filename5 = sprintf('%s %d %s', 'Subject', subject_number, 'P1000.mat');
+filename6 = sprintf('%s %d %s', 'Subject', subject_number, 'PT67.mat');
+filename7 = sprintf('%s %d %s', 'Subject', subject_number, 'PT140.mat');
 
 xls_threshold_file = 'Summer_2011_Thresholds';
 
@@ -63,6 +65,16 @@ if (exist(filename5,'file'))
 else
     file5=0;
 end
+if (exist(filename6,'file'))
+    file6=1;
+else
+    file6=0;
+end
+if (exist(filename7,'file'))
+    file7=1;
+else
+    file7=0;
+end
 
 %use the if statements to sort the subject by which of the pulse width test
 %they took
@@ -92,6 +104,22 @@ if (file4 && file5)
 
     load(filename5)
     pulse_name2 = '1000'; 
+    res_p2 = subject_data.ResponseMatrix;
+    voltage_p2 = subject_data.ControlVoltageOutput;
+    res_time_yes_p2 = subject_data.YesResponseTime;
+    res_time_no_p2 = subject_data.NoResponseTime;
+end
+
+if (file6 && file7)
+    load(filename6)
+    pulse_name1 = 'T67'; 
+    res_p1 = subject_data.ResponseMatrix;
+    voltage_p1 = subject_data.ControlVoltageOutput;
+    res_time_yes_p1 = subject_data.YesResponseTime;
+    res_time_no_p1 = subject_data.NoResponseTime;
+
+    load(filename7)
+    pulse_name2 = 'T140'; 
     res_p2 = subject_data.ResponseMatrix;
     voltage_p2 = subject_data.ControlVoltageOutput;
     res_time_yes_p2 = subject_data.YesResponseTime;

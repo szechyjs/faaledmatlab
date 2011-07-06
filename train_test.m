@@ -181,7 +181,7 @@ function train_test(pulse_length, delay_length, sub_num)
     %%%%%%%%%%%%%%%%%%%%%%%%%%
     subject_data = struct('SubjectNumber', sub_num, 'ControlVoltageOutput', voltages_tested, 'ApproximateI', intensities_tested, 'ResponseMatrix', responses, 'YesResponseTime', res_time_yes, 'NoResponseTime', res_time_no);
 
-    filename = sprintf('Subject %d P%d.mat', sub_num, pulse_length);
+    filename = sprintf('Subject %d PT%d.mat', sub_num, pulse_length);
     save(filename, 'subject_data')
 
     %%clean up 
