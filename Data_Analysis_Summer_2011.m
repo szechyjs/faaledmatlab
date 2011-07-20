@@ -78,14 +78,16 @@ end
 
 %use the if statements to sort the subject by which of the pulse width test
 %they took
-if (file2 && file3)
+if (file2)
     load(filename2)
     pulse_name1 = '50'; 
     res_p1 = subject_data.ResponseMatrix;
     voltage_p1 = subject_data.ControlVoltageOutput;
     res_time_yes_p1 = subject_data.YesResponseTime;
     res_time_no_p1 = subject_data.NoResponseTime;
+end
 
+if (file3)
     load(filename3)
     pulse_name2 = '140'; 
     res_p2 = subject_data.ResponseMatrix;
@@ -94,14 +96,16 @@ if (file2 && file3)
     res_time_no_p2 = subject_data.NoResponseTime;
 end
 
-if (file4 && file5)
+if (file4)
     load(filename4)
     pulse_name1 = '500'; 
     res_p1 = subject_data.ResponseMatrix;
     voltage_p1 = subject_data.ControlVoltageOutput;
     res_time_yes_p1 = subject_data.YesResponseTime;
     res_time_no_p1 = subject_data.NoResponseTime;
+end
 
+if (file5)
     load(filename5)
     pulse_name2 = '1000'; 
     res_p2 = subject_data.ResponseMatrix;
@@ -110,14 +114,16 @@ if (file4 && file5)
     res_time_no_p2 = subject_data.NoResponseTime;
 end
 
-if (file6 && file7)
+if (file6)
     load(filename6)
     pulse_name1 = 'T67'; 
     res_p1 = subject_data.ResponseMatrix;
     voltage_p1 = subject_data.ControlVoltageOutput;
     res_time_yes_p1 = subject_data.YesResponseTime;
     res_time_no_p1 = subject_data.NoResponseTime;
+end
 
+if (file7)
     load(filename7)
     pulse_name2 = 'T140'; 
     res_p2 = subject_data.ResponseMatrix;
