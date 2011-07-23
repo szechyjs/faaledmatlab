@@ -45,7 +45,7 @@ function steady_test(sub_num)
     %relationship
     load('int_cal.mat')
     
-    post_res_delay = 2; %sec
+    post_res_delay = 1; %sec
 
     %%%%%Udate required based on new voltages%%%%%
     test_values = v_model;

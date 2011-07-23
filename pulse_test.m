@@ -49,7 +49,7 @@ function pulse_test(pulse_length, sub_num)
     %relationship
     load('int_cal.mat')
     
-    post_res_delay = 2; %sec
+    post_res_delay = 1; %sec
 
     %%%%%Udate required based on new voltages%%%%%
     test_values = v_model;
@@ -113,7 +113,7 @@ function pulse_test(pulse_length, sub_num)
         tone(440, 0.4)
         start(ao)
         %trigger(ao)
-        wait(ao,6)
+        wait(ao,5)
 
         %intensities_tested(test_index) = I(test_values_rand(test_index));
         voltages_tested(test_index) = test_values_rand(test_index);
