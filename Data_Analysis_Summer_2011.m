@@ -47,31 +47,37 @@ res_time_no_steady = subject_data_steady.NoResponseTime;
 % check filenames for existance
 if (exist(filename2,'file'))
     file2=1;
+    sheet=1;
 else
     file2=0;
 end
 if (exist(filename3,'file'))
     file3=1;
+    sheet=1;
 else
     file3=0;
 end
 if (exist(filename4,'file'))
     file4=1;
+    sheet=2;
 else
     file4=0;
 end
 if (exist(filename5,'file'))
     file5=1;
+    sheet=2;
 else
     file5=0;
 end
 if (exist(filename6,'file'))
     file6=1;
+    sheet=3;
 else
     file6=0;
 end
 if (exist(filename7,'file'))
     file7=1;
+    sheet=3;
 else
     file7=0;
 end
@@ -135,7 +141,7 @@ end
 volt_ops = v_model;
 
 range = sprintf('%s %d','A',subject_number-198);
-xlswrite(xls_threshold_file, subject_number, 1, range)
+xlswrite(xls_threshold_file, subject_number, sheet, range)
 
 %% Results for the 5 second (steady) pulse
 
@@ -207,7 +213,7 @@ legend({'P(False Pos)','Data', 'Threshold','Weighted fit', '95% Confidence Limit
 axis([0 10 -.2 1.2])
 
 range = sprintf('%s %d','B',subject_number-198);
-xlswrite(xls_threshold_file, threshold(2), 1, range)
+xlswrite(xls_threshold_file, threshold(2), sheet, range)
 
 %% Results for the P1 (depends on test set up for each of the subjects)
 
@@ -280,7 +286,7 @@ ylabel('Probability of Detection');
 axis([0 15 -.2 1.2])
 
 range = sprintf('%s %d','C',subject_number-198);
-xlswrite(xls_threshold_file, threshold(2), 1, range)
+xlswrite(xls_threshold_file, threshold(2), sheet, range)
     
 %% Results for the P2 (depends on test set up for each of the subjects)
 
@@ -353,4 +359,4 @@ ylabel('Probability of Detection');
 axis([0 10 -.2 1.2])
 
 range = sprintf('%s %d','D',subject_number-198);
-xlswrite(xls_threshold_file, threshold(2), 1, range)
+xlswrite(xls_threshold_file, threshold(2), sheet, range)
